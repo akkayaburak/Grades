@@ -8,7 +8,7 @@ namespace Grades
 {
     public class ReadTxt
     {
-        public List<string> Read()
+        public static List<string> Read()
         {
             List<string> paths = Directory.EnumerateFiles(@"..\..\..\GradesTxt\", "*.txt").ToList();
             if (paths == null)
@@ -21,7 +21,7 @@ namespace Grades
                 string[] lines = File.ReadAllLines(filePath);
                 list.AddRange(lines.ToList());
             }
-           
+            Console.WriteLine("Files have been read.");
             return list;
         }
     }

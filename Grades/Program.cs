@@ -10,8 +10,7 @@ namespace Grades
     {
         static void Main(string[] args)
         {
-            ReadTxt readTxt = new ReadTxt();
-            List<string> allGrades = readTxt.Read();
+            List<string> allGrades = ReadTxt.Read();
             var listOfGrade = new List<Grade>();
             foreach(var grade in allGrades)
             {
@@ -23,14 +22,8 @@ namespace Grades
                     Final = int.Parse(splittedLines[2])
                 });
             }
-            List<Grade> SortedList = listOfGrade.OrderBy(o => o.ID).ToList();
-            using(TextWriter textWriter = new StreamWriter("allgrades.txt"))
-            {
-                foreach(var grade in SortedList)
-                {
-                    textWriter.WriteLine(grade);
-                }
-            }
+            List<Grade> sortedList = listOfGrade.OrderBy(o => o.ID).ToList();
+            WriteTxt.Write(sortedList);
         }
     }
 }
